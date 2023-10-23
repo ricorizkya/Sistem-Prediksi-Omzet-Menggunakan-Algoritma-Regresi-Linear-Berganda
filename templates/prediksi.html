@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard - Berdikari Official</title>
+
+    <!-- Favicons -->
+    <link href="/static/assets/img/favicon.png" rel="icon" />
+    <link
+      href="/static/assets/img/apple-touch-icon.png"
+      rel="apple-touch-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="/static/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="/static/assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link
+      href="/static/assets/vendor/quill/quill.bubble.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+          <span class="d-none d-lg-block">Berdikari Official</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <!-- End Logo -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{ url_for('index') }}">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-heading">Dataset</li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{ url_for('dataset') }}">
+            <i class="bi bi-database-fill"></i>
+            <span>Dataset</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{{ url_for('importDataset') }}">
+            <i class="bi bi-database-fill-add"></i>
+            <span>Import Dataset</span>
+          </a>
+        </li>
+
+        <li class="nav-heading">Prediksi</li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('prediksi') }}">
+            <i class="bi bi-graph-up-arrow"></i>
+            <span>Prediksi Penghasilan</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Prediksi</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Prediksi</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section dashboard">
+        <div class="row">
+          <!-- Left side columns -->
+          <div class="col-lg-16">
+            <div class="row">
+              <!-- Recent Sales -->
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: 28px">
+                      Prediksi Data Baru
+                    </h5>
+
+                    <form action="/prediksi" method="post">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingPembeli"
+                              name="pembeli"
+                              placeholder="Pembeli"
+                              required
+                            />
+                            <label for="floatingPembeli">Pembeli</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingProduk"
+                              name="produk_dilihat"
+                              placeholder="Produk Dilihat"
+                              required
+                            />
+                            <label for="floatingProduk">Produk Dilihat</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingPengunjung"
+                              name="total_pengunjung"
+                              placeholder="Total Pengunjung"
+                              required
+                            />
+                            <label for="floatingPengunjung"
+                              >Total Pengunjung</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingPesananBerhasil"
+                              name="pesanan_berhasil"
+                              placeholder="Pesanan Berhasil"
+                              required
+                            />
+                            <label for="floatingPesananBerhasil"
+                              >Pesanan Berhasil</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingPesananBatal"
+                              name="pesanan_dibatalkan"
+                              placeholder="Pesanan Dibatalkan"
+                              required
+                            />
+                            <label for="floatingPesananBatal"
+                              >Pesanan Dibatalkan</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-floating mb-3">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="floatingPesananKembali"
+                              name="pesanan_dikembalikan"
+                              placeholder="Pesanan Dikembalikan"
+                              required
+                            />
+                            <label for="floatingPesananKembali"
+                              >Pesanan Dikembalikan</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="submit">
+                          Proses
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- End Recent Sales -->
+              <div class="col-12" id="hasilPrediksi" style="display: none">
+                <!-- <div class="card recent-sales overflow-auto">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: 28px">
+                      Hasil Prediksi
+                    </h5>
+                    <h5>
+                      Berdasarkan data yang dimasukkan yakni, Total Pesanan
+                      sebanyak <b>{{ total_pesanan }} Pcs</b>, dengan rata-rata
+                      Penjualan per Pesanan <b>{{ penjualan_per_pesanan }}</b>,
+                      rata-rata Produk Dilihat sebanyak
+                      <b>{{ produk_dilihat }} Kali</b>, dengan Total Pengunjung
+                      pada toko sebanyak <b>{{ total_pengunjung }} User</b>, dan
+                      Pesanan Dibatalkan sebanyak
+                      <b>{{ pesanan_dibatalkan }} Kali</b>, serta Pesanan
+                      Dikembalikan sebanyak
+                      <b>{{ pesanan_dikembalikan }} Kali</b>, dan Total Pembeli
+                      sebanyak <b>{{ pembeli }} User</b>. Maka, hasil prediksi
+                      penghasilan dalam satu hari yaitu,
+                    </h5>
+                    <h1>
+                      <span
+                        class="badge bg-success"
+                        style="width: 100%; height: 100%"
+                      >
+                        {{ hasil }}
+                      </span>
+                    </h1>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- End Left side columns -->
+        </div>
+      </section>
+    </main>
+    <!-- End #main -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/static/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/static/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="/static/assets/vendor/quill/quill.min.js"></script>
+    <script src="/static/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/static/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/static/assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const hasilPrediksi = document.getElementById("hasilPrediksi");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Menghentikan pengiriman form standar.
+
+          // Lakukan pengiriman data ke server menggunakan teknik AJAX.
+          const formData = new FormData(form);
+          fetch("/prediksi", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Setel tampilan elemen hasilPrediksi sesuai dengan kondisi.
+              hasilPrediksi.innerHTML = `
+              <div class="card recent-sales overflow-auto">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: 28px">
+                      Hasil Prediksi
+                    </h5>
+                    <h5>
+              Berdasarkan data yang dimasukkan yakni, Total Pesanan
+                      sebanyak <b>${data.total_pesanan} Pcs</b>, dengan rata-rata
+                      Penjualan per Pesanan <b>${data.penjualan_per_pesanan}</b>,
+                      rata-rata Produk Dilihat sebanyak
+                      <b>${data.produk_dilihat} Kali</b>, dengan Total Pengunjung
+                      pada toko sebanyak <b>${data.total_pengunjung} User</b>, dan
+                      Pesanan Dibatalkan sebanyak
+                      <b>${data.pesanan_dibatalkan} Kali</b>, serta Pesanan
+                      Dikembalikan sebanyak
+                      <b>${data.pesanan_dikembalikan} Kali</b>, dan Total Pembeli
+                      sebanyak <b>${data.pembeli} User</b>. Maka, hasil prediksi
+                      penghasilan dalam satu hari yaitu,
+                    </h5>
+                    <h1>
+                      <span
+                        class="badge bg-success"
+                        style="width: 100%; height: 100%"
+                      >
+                        ${data.hasil}
+                      </span>
+                    </h1>
+                  </div>
+                </div>
+              `;
+
+              hasilPrediksi.style.display = "block"; // Tampilkan elemen hasilPrediksi.
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
